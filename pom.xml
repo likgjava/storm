@@ -5,6 +5,18 @@
 	<groupId>com.blogchong</groupId>
 	<artifactId>storm-example</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<packaging>jar</packaging>
 
 	<name>storm-example</name>
@@ -19,6 +31,32 @@
 			<groupId>org.apache.storm</groupId>
 			<artifactId>storm-core</artifactId>
 			<version>0.9.2-incubating</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>log4j-over-slf4j</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<!--与 slf4j-log4j12 冲突，所以需要进行exclude移除-->
+			</exclusions>
+		</dependency>
+
+		<!--metaq依赖-->
+		<dependency>
+			<groupId>com.taobao.metamorphosis</groupId>
+			<artifactId>metamorphosis-commons</artifactId>
+			<version>1.4.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.taobao.metamorphosis</groupId>
+			<artifactId>metamorphosis-client</artifactId>
+			<version>1.4.6.2</version>
+		</dependency>
+
+		<!--mysql依赖-->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.22</version>
 		</dependency>
 
 		<dependency>
